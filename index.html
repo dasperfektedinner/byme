@@ -10,31 +10,47 @@
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: radial-gradient(circle at center, #3a3a3a 0%, #1a1a1a 45%, #000000 100%);
-    color: #ffffff;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to bottom, #0d1b2a 0%, #1b2a47 60%, #0d1b2a 100%);
+    color: #ffffff;
 }
 
-/* CONTAINER */
+/* CONTAINER MIT SPOTLIGHT EFFEKT */
 .container {
-    background: radial-gradient(circle at top, rgba(255,255,255,0.10), rgba(0,0,0,0.90));
+    background: radial-gradient(circle at center, rgba(255,255,255,0.15), rgba(0,0,50,0.85));
     padding: 45px 50px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
     max-width: 500px;
     width: 90%;
     position: relative;
 }
 
-/* LOGO */
+/* LOGO MIT ANIMATION */
 .logo {
     width: 120px;
     margin: 0 auto 20px auto;
     display: block;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
+    }
+    50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+    }
+    100% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+    }
 }
 
 /* TEXT */
@@ -124,7 +140,7 @@ p {
             Termin bestätigen
         </a>
 
-        <a class="btn" href="Speisekarte.pdf" download>
+        <a class="btn" href="speisekarte.pdf" download>
             Speisekarte herunterladen
         </a>
     </div>
@@ -138,7 +154,6 @@ function showDetails() {
 
     p1.classList.remove("active");
 
-    // kurze Verzögerung für Fade
     setTimeout(() => {
         p1.style.display = "none";
         p2.style.display = "block";
