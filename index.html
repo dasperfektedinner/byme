@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
 /* BODY + HINTERGRUND */
@@ -47,7 +47,7 @@ body {
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
-/* TEXT */
+/* ÜBERSCHRIFT */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.8em;
@@ -56,12 +56,20 @@ h1 {
     font-weight: 700;
 }
 
-p {
-    font-family: 'Lato', sans-serif;
-    font-size: 1.15em;
+/* SCHRIFT FÜR EINLADUNG */
+.invite-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
     margin: 12px 0;
     line-height: 1.5;
-    font-weight: 400;
+}
+
+/* TERMIN DATEN */
+.termin-daten {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15em;
+    margin: 8px 0;
+    line-height: 1.5;
 }
 
 /* ABGRENZUNGSLINIEN */
@@ -134,15 +142,17 @@ p {
     <div class="page" id="page2">
         <img src="logo.png" alt="Koch Logo" class="logo">
 
-        <p><strong>Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</strong></p>
+        <!-- EINLADUNGSTEXT MIT SCHRIFTART DANCING SCRIPT -->
+        <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
         <!-- Linie über den Termindaten -->
         <div class="divider"></div>
 
-        <p>Am: 21.02.2025</p>
-        <p>Wo: Thiedeweg 23b</p>
-        <p>Wann: 18 Uhr</p>
-        <p>Dresscode: Locker und gemütlich</p>
+        <!-- TERMIN DATEN MIT PLAYFAIR DISPLAY -->
+        <p class="termin-daten">Am: 21.02.2025</p>
+        <p class="termin-daten">Wo: Thiedeweg 23b</p>
+        <p class="termin-daten">Wann: 18 Uhr</p>
+        <p class="termin-daten">Dresscode: Locker und gemütlich</p>
 
         <!-- Linie über dem Button -->
         <div class="divider"></div>
@@ -152,7 +162,7 @@ p {
             Termin bestätigen
         </a>
 
-        <a class="btn" href="speisekarte.pdf" download>
+        <a class="btn" href="Speisekarte.pdf" download>
             Speisekarte herunterladen
         </a>
     </div>
