@@ -14,43 +14,34 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #0d1b2a 0%, #1b2a47 60%, #0d1b2a 100%);
+    background: linear-gradient(135deg, #0b1a2a, #1f2f4a, #0b1a2a);
     color: #ffffff;
 }
 
 /* CONTAINER MIT SPOTLIGHT EFFEKT */
 .container {
-    background: radial-gradient(circle at center, rgba(255,255,255,0.15), rgba(0,0,50,0.85));
-    padding: 45px 50px;
-    border-radius: 20px;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
+    padding: 50px 55px;
+    border-radius: 25px;
     text-align: center;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-    max-width: 500px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.7);
+    max-width: 520px;
     width: 90%;
     position: relative;
 }
 
-/* LOGO MIT ANIMATION */
+/* LOGO MIT PULS EFFEKT */
 .logo {
     width: 120px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 25px auto;
     display: block;
-    animation: pulse 2s infinite alternate;
+    animation: pulse 2.5s infinite alternate;
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
-    }
-    50% {
-        transform: scale(1.05);
-        filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
-    }
-    100% {
-        transform: scale(1.02);
-        filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
-    }
+    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
+    100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
 /* TEXT */
@@ -62,8 +53,16 @@ h1 {
 
 p {
     font-size: 1.15em;
-    margin: 10px 0;
+    margin: 12px 0;
     line-height: 1.5;
+}
+
+/* ABGRENZUNGSLINIEN */
+.divider {
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    margin: 20px 0;
+    border-radius: 1px;
 }
 
 /* BUTTONS */
@@ -130,10 +129,16 @@ p {
 
         <p><strong>Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</strong></p>
 
+        <!-- Linie über den Termindaten -->
+        <div class="divider"></div>
+
         <p>Am: 21.02.2025</p>
         <p>Wo: Thiedeweg 23b</p>
         <p>Wann: 18 Uhr</p>
         <p>Dresscode: Locker und gemütlich</p>
+
+        <!-- Linie über dem Button -->
+        <div class="divider"></div>
 
         <a class="btn green"
            href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
