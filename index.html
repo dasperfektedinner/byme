@@ -29,7 +29,7 @@ html, body {
     background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
     padding: 50px 55px;
     border-radius: 25px;
-    text-align: center;
+    text-align: left; /* Standard für Inhalte linksbündig */
     box-shadow: 0 30px 70px rgba(0,0,0,0.7);
     max-width: 520px;
     width: 90%;
@@ -39,8 +39,8 @@ html, body {
 /* LOGO MIT PULS EFFEKT */
 .logo {
     width: 120px;
-    margin: 0 auto 25px auto;
     display: block;
+    margin: 0 auto 25px auto; /* Logo bleibt zentriert */
     animation: pulse 2.5s infinite alternate;
 }
 
@@ -50,15 +50,15 @@ html, body {
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
-/* ÜBERSCHRIFT – LEICHT NACH LINKS VERSCHOBEN */
+/* ÜBERSCHRIFT – LINKSBUENDIG */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.8em;
     margin-bottom: 25px;
     letter-spacing: 1px;
     font-weight: 700;
-    text-align: left;   /* linksbündig */
-    margin-left: 40px;  /* leicht nach links verschoben */
+    text-align: left; /* linksbündig */
+    margin-left: 0;    /* direkt am Container-Rand */
 }
 
 /* SCHRIFT FÜR EINLADUNG */
