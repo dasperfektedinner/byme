@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* --- BODY + HINTERGRUND --- */
+/* BODY + HINTERGRUND */
 html, body {
     margin: 0;
     padding: 0;
@@ -17,58 +17,58 @@ html, body {
     height: 100%;
     font-family: 'Lato', Arial, sans-serif;
     background: linear-gradient(135deg, #0b1a2a, #1f2f4a, #0b1a2a);
-    color: #fff;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /* verhindert Scrollen */
 }
 
-/* --- CONTAINER MIT SPOTLIGHT --- */
+/* CONTAINER MIT SPOTLIGHT EFFEKT */
 .container {
     background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
-    padding: 50px 40px;
+    padding: 50px 55px;
     border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    max-width: 500px;
+    text-align: center; 
+    box-shadow: 0 30px 70px rgba(0,0,0,0.7);
+    max-width: 520px;
     width: 90%;
     position: relative;
-    overflow: hidden;
 }
 
-/* --- LOGO MIT PULS --- */
+/* LOGO MIT PULS EFFEKT */
 .logo {
     width: 120px;
     display: block;
     margin: 0 auto 25px auto;
-    animation: pulse 2s infinite alternate;
+    animation: pulse 2.5s infinite alternate;
 }
 
 @keyframes pulse {
     0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
-    50% { transform: scale(1.08); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
-    100% { transform: scale(1.03); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
+    100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
-/* --- ÜBERSCHRIFT --- */
+/* ÜBERSCHRIFT */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.4em;
-    margin-bottom: 20px;
-    font-weight: 700;
+    font-size: 2.2em; 
+    margin-bottom: 25px;
     letter-spacing: 1px;
+    font-weight: 700;
+    text-align: center; 
 }
 
-/* --- EINLADUNGSTEXT --- */
+/* EINLADUNGSTEXT */
 .invite-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.45em;
-    margin: 15px 0;
-    line-height: 1.6;
+    font-size: 1.4em;
+    margin: 12px 0;
+    line-height: 1.5;
 }
 
-/* --- TERMIN DATEN --- */
+/* TERMIN DATEN */
 .termin-daten {
     font-family: 'Playfair Display', serif;
     font-size: 1.15em;
@@ -76,7 +76,7 @@ h1 {
     line-height: 1.5;
 }
 
-/* --- ABGRENZUNGSLINIEN --- */
+/* ABGRENZUNGSLINIEN */
 .divider {
     height: 1px;
     background: rgba(255,255,255,0.25);
@@ -84,17 +84,17 @@ h1 {
     border-radius: 1px;
 }
 
-/* --- BUTTONS --- */
+/* BUTTONS */
 .btn {
     margin-top: 20px;
-    padding: 14px 32px;
+    padding: 14px 30px;
     font-size: 1em;
     font-weight: 600;
     border: none;
     border-radius: 30px;
     cursor: pointer;
     background: linear-gradient(180deg, #ffffff, #dddddd);
-    color: #000;
+    color: #000000;
     transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
@@ -102,26 +102,27 @@ h1 {
 }
 
 .btn:hover {
+    background: #ffffff;
     transform: scale(1.05);
 }
 
 .green {
     background: linear-gradient(180deg, #4caf50, #2e7d32);
-    color: #fff;
+    color: white;
 }
 
 .green:hover {
     background: #43a047;
 }
 
-/* --- ZURÜCK BUTTON --- */
+/* ZURÜCK BUTTON oben links */
 .back-btn {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 10px;
+    left: 10px;
     font-family: 'Playfair Display', serif;
     font-size: 1em;
-    color: #fff;
+    color: #ffffff;
     text-decoration: underline;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -131,24 +132,18 @@ h1 {
     color: #ddd;
 }
 
-/* --- SEITEN + MORPH-ÜBERGANG --- */
+/* SEITEN + ANIMATION */
 .page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     opacity: 0;
-    clip-path: circle(0% at 50% 50%);
-    transform: scale(0.95);
-    transition: clip-path 0.8s ease-in-out, opacity 0.5s ease-in-out, transform 0.6s ease;
+    transform: scale(0.95) rotate(-1deg) translateY(20px);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     display: none;
 }
 
 .page.active {
     display: block;
     opacity: 1;
-    transform: scale(1);
-    clip-path: circle(150% at 50% 50%);
+    transform: scale(1) rotate(0deg) translateY(0);
 }
 </style>
 </head>
@@ -161,7 +156,7 @@ h1 {
     <div class="page active" id="page1">
         <img src="logo.png" alt="Koch Logo" class="logo">
         <h1>Terminvorschlag</h1>
-        <button class="btn green" onclick="showDetails()">Anzeigen</button>
+        <button class="btn" onclick="showDetails()">Anzeigen</button>
     </div>
 
     <!-- SEITE 2 -->
@@ -172,10 +167,10 @@ h1 {
 
         <div class="divider"></div>
 
-        <p class="termin-daten"><strong>Am:</strong> 21.02.2026</p>
-        <p class="termin-daten"><strong>Wo:</strong> Thiedeweg 23b</p>
-        <p class="termin-daten"><strong>Wann:</strong> 18 Uhr</p>
-        <p class="termin-daten"><strong>Dresscode:</strong> Locker und gemütlich</p>
+        <p class="termin-daten">Am: 21.02.2026</p>
+        <p class="termin-daten">Wo: Thiedeweg 23b</p>
+        <p class="termin-daten">Wann: 18 Uhr</p>
+        <p class="termin-daten">Dresscode: Locker und gemütlich</p>
 
         <div class="divider"></div>
 
@@ -199,26 +194,26 @@ function showDetails() {
     const p1 = document.getElementById("page1");
     const p2 = document.getElementById("page2");
 
-    p2.style.display = "block";
-    setTimeout(() => {
-        p1.classList.remove("active");
-        p2.classList.add("active");
-    }, 50);
+    p1.classList.remove("active");
 
-    setTimeout(() => p1.style.display = "none", 800);
+    setTimeout(() => {
+        p1.style.display = "none";
+        p2.style.display = "block";
+        setTimeout(() => p2.classList.add("active"), 50);
+    }, 200);
 }
 
 function goBack() {
     const p1 = document.getElementById("page1");
     const p2 = document.getElementById("page2");
 
-    p1.style.display = "block";
-    setTimeout(() => {
-        p2.classList.remove("active");
-        p1.classList.add("active");
-    }, 50);
+    p2.classList.remove("active");
 
-    setTimeout(() => p2.style.display = "none", 800);
+    setTimeout(() => {
+        p2.style.display = "none";
+        p1.style.display = "block";
+        setTimeout(() => p1.classList.add("active"), 50);
+    }, 200);
 }
 </script>
 
