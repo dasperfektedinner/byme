@@ -29,7 +29,7 @@ html, body {
     background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
     padding: 50px 55px;
     border-radius: 25px;
-    text-align: left; /* Standard für Inhalte linksbündig */
+    text-align: center; /* alles zentriert */
     box-shadow: 0 30px 70px rgba(0,0,0,0.7);
     max-width: 520px;
     width: 90%;
@@ -40,7 +40,7 @@ html, body {
 .logo {
     width: 120px;
     display: block;
-    margin: 0 auto 25px auto; /* Logo bleibt zentriert */
+    margin: 0 auto 25px auto; /* Logo zentriert */
     animation: pulse 2.5s infinite alternate;
 }
 
@@ -50,15 +50,14 @@ html, body {
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
-/* ÜBERSCHRIFT – LINKSBUENDIG */
+/* ÜBERSCHRIFT – ZENTRIERT UND KLEINER */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8em;
+    font-size: 2.2em; /* etwas kleiner */
     margin-bottom: 25px;
     letter-spacing: 1px;
     font-weight: 700;
-    text-align: left; /* linksbündig */
-    margin-left: 0;    /* direkt am Container-Rand */
+    text-align: center; /* zentriert */
 }
 
 /* SCHRIFT FÜR EINLADUNG */
