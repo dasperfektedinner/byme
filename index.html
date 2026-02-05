@@ -5,161 +5,129 @@
 <title>Terminvorschlag</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* --- BODY + HINTERGRUND --- */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     font-family: 'Lato', Arial, sans-serif;
-    color: #ffffff;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Blauschwarzer, verschwommener abstrakter Hintergrund */
-    background: radial-gradient(circle at center, #0a0f1b 0%, #0f1a2e 100%);
+    background: radial-gradient(circle at center, #05080f, #0b1a2a);
 }
 
 body::before {
-    content: '';
+    content: "";
     position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center;
-    background-size: cover;
-    filter: blur(12px) brightness(0.35);
+    inset: 0;
+    background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80")
+        no-repeat center/cover;
+    filter: blur(18px) brightness(0.35);
     z-index: -1;
 }
 
-/* --- CONTAINER MIT SPOTLIGHT --- */
 .container {
-    background: rgba(10,15,30,0.65);
-    backdrop-filter: blur(8px);
-    padding: 50px 55px;
-    border-radius: 25px;
-    text-align: center; 
-    box-shadow: 0 30px 70px rgba(0,0,0,0.7);
+    background: rgba(8, 12, 25, 0.65);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
     max-width: 520px;
     width: 90%;
     position: relative;
-    z-index: 1;
+    overflow: hidden;
 }
 
-/* --- LOGO MIT PULS --- */
 .logo {
     width: 120px;
-    display: block;
-    margin: 0 auto 25px auto;
+    margin-bottom: 25px;
     animation: pulse 2.5s infinite alternate;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
-    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
-    100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
+    from { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,.3)); }
+    to   { transform: scale(1.08); filter: drop-shadow(0 0 18px rgba(255,255,255,.5)); }
 }
 
-/* --- ÜBERSCHRIFT --- */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2em; 
+    font-size: 2.3em;
     margin-bottom: 25px;
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-align: center; 
 }
 
-/* --- EINLADUNGSTEXT --- */
 .invite-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.4em;
-    margin: 12px 0;
-    line-height: 1.5;
+    font-size: 1.45em;
 }
 
-/* --- TERMIN DATEN --- */
 .termin-daten {
     font-family: 'Playfair Display', serif;
-    font-size: 1.15em;
     margin: 8px 0;
-    line-height: 1.5;
+    font-size: 1.1em;
 }
 
-/* --- ABGRENZUNGSLINIEN --- */
 .divider {
     height: 1px;
-    background: rgba(255,255,255,0.25);
-    margin: 20px 0;
-    border-radius: 1px;
+    background: rgba(255,255,255,.25);
+    margin: 22px 0;
 }
 
-/* --- BUTTONS --- */
 .btn {
-    margin-top: 20px;
+    margin-top: 18px;
     padding: 14px 30px;
-    font-size: 1em;
-    font-weight: 600;
-    border: none;
     border-radius: 30px;
+    border: none;
+    font-weight: 600;
     cursor: pointer;
-    background: linear-gradient(180deg, #ffffff, #dddddd);
-    color: #000000;
-    transition: all 0.3s ease;
+    background: linear-gradient(#fff, #ddd);
+    transition: .3s;
     text-decoration: none;
+    color: #000;
     display: inline-block;
     min-width: 230px;
 }
 
-.btn:hover {
-    background: #ffffff;
-    transform: scale(1.05);
-}
+.btn:hover { transform: scale(1.05); }
 
 .green {
-    background: linear-gradient(180deg, #4caf50, #2e7d32);
-    color: white;
+    background: linear-gradient(#4caf50, #2e7d32);
+    color: #fff;
 }
 
-.green:hover {
-    background: #43a047;
-}
-
-/* --- ZURÜCK BUTTON --- */
 .back-btn {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1em;
-    color: #ffffff;
-    text-decoration: underline;
+    top: 14px;
+    left: 14px;
     cursor: pointer;
-    transition: color 0.3s ease;
+    text-decoration: underline;
+    opacity: .8;
 }
 
-.back-btn:hover {
-    color: #ddd;
-}
-
-/* --- SEITEN + ANIMATION --- */
 .page {
+    position: absolute;
+    inset: 0;
     opacity: 0;
-    transform: scale(0.95) rotate(-1deg) translateY(20px);
-    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    display: none;
+    transform: scale(0.97);
+    filter: blur(8px);
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.25,.8,.25,1),
+        filter .9s ease;
+    pointer-events: none;
 }
 
 .page.active {
-    display: block;
     opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0);
+    transform: scale(1);
+    filter: blur(0);
+    pointer-events: auto;
 }
 </style>
 </head>
@@ -168,17 +136,14 @@ h1 {
 
 <div class="container">
 
-    <!-- SEITE 1 -->
     <div class="page active" id="page1">
-        <img src="logo.png" alt="Koch Logo" class="logo">
+        <img src="logo.png" class="logo">
         <h1>Terminvorschlag</h1>
         <button class="btn green" onclick="showDetails()">Anzeigen</button>
     </div>
 
-    <!-- SEITE 2 -->
     <div class="page" id="page2">
-        <img src="logo.png" alt="Koch Logo" class="logo">
-
+        <img src="logo.png" class="logo">
         <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
         <div class="divider"></div>
@@ -190,8 +155,7 @@ h1 {
 
         <div class="divider"></div>
 
-        <a class="btn green"
-           href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
+        <a class="btn green" href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
             Termin bestätigen
         </a>
 
@@ -200,36 +164,19 @@ h1 {
         </a>
 
         <div class="back-btn" onclick="goBack()">Zurück</div>
-
     </div>
 
 </div>
 
 <script>
 function showDetails() {
-    const p1 = document.getElementById("page1");
-    const p2 = document.getElementById("page2");
-
-    p2.style.display = "block";
-    setTimeout(() => {
-        p1.classList.remove("active");
-        p2.classList.add("active");
-    }, 50);
-
-    setTimeout(() => p1.style.display = "none", 800);
+    page2.classList.add("active");
+    page1.classList.remove("active");
 }
 
 function goBack() {
-    const p1 = document.getElementById("page1");
-    const p2 = document.getElementById("page2");
-
-    p1.style.display = "block";
-    setTimeout(() => {
-        p2.classList.remove("active");
-        p1.classList.add("active");
-    }, 50);
-
-    setTimeout(() => p2.style.display = "none", 800);
+    page1.classList.add("active");
+    page2.classList.remove("active");
 }
 </script>
 
