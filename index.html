@@ -29,7 +29,7 @@ html, body {
     background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
     padding: 50px 55px;
     border-radius: 25px;
-    text-align: center; /* alles zentriert */
+    text-align: center; 
     box-shadow: 0 30px 70px rgba(0,0,0,0.7);
     max-width: 520px;
     width: 90%;
@@ -40,7 +40,7 @@ html, body {
 .logo {
     width: 120px;
     display: block;
-    margin: 0 auto 25px auto; /* Logo zentriert */
+    margin: 0 auto 25px auto;
     animation: pulse 2.5s infinite alternate;
 }
 
@@ -50,17 +50,17 @@ html, body {
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
-/* ÜBERSCHRIFT – ZENTRIERT UND KLEINER */
+/* ÜBERSCHRIFT */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2em; /* etwas kleiner */
+    font-size: 2.2em; 
     margin-bottom: 25px;
     letter-spacing: 1px;
     font-weight: 700;
-    text-align: center; /* zentriert */
+    text-align: center; 
 }
 
-/* SCHRIFT FÜR EINLADUNG */
+/* EINLADUNGSTEXT */
 .invite-text {
     font-family: 'Dancing Script', cursive;
     font-size: 1.4em;
@@ -118,8 +118,8 @@ h1 {
 /* ZURÜCK BUTTON oben links */
 .back-btn {
     position: absolute;
-    top: 10px;   /* ganz oben */
-    left: 10px;  /* ganz links */
+    top: 10px;
+    left: 10px;
     font-family: 'Playfair Display', serif;
     font-size: 1em;
     color: #ffffff;
@@ -132,18 +132,18 @@ h1 {
     color: #ddd;
 }
 
-/* SEITEN + FADE ANIMATION */
+/* SEITEN + ANIMATION */
 .page {
     opacity: 0;
-    transform: scale(0.98);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: scale(0.95) rotate(-1deg) translateY(20px);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     display: none;
 }
 
 .page.active {
     display: block;
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg) translateY(0);
 }
 </style>
 </head>
@@ -163,19 +163,15 @@ h1 {
     <div class="page" id="page2">
         <img src="logo.png" alt="Koch Logo" class="logo">
 
-        <!-- EINLADUNGSTEXT MIT SCHRIFTART DANCING SCRIPT -->
         <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
-        <!-- Linie über den Termindaten -->
         <div class="divider"></div>
 
-        <!-- TERMIN DATEN MIT PLAYFAIR DISPLAY -->
-        <p class="termin-daten">Am: 21.02.2026</p>
+        <p class="termin-daten">Am: 21.02.2025</p>
         <p class="termin-daten">Wo: Thiedeweg 23b</p>
         <p class="termin-daten">Wann: 18 Uhr</p>
         <p class="termin-daten">Dresscode: Locker und gemütlich</p>
 
-        <!-- Linie über dem Button -->
         <div class="divider"></div>
 
         <a class="btn green"
@@ -183,11 +179,10 @@ h1 {
             Termin bestätigen
         </a>
 
-        <a class="btn" href="Speisekarte.pdf" download>
+        <a class="btn" href="speisekarte.pdf" download>
             Speisekarte herunterladen
         </a>
 
-        <!-- ZURÜCK BUTTON oben links -->
         <div class="back-btn" onclick="goBack()">Zurück</div>
 
     </div>
@@ -205,7 +200,7 @@ function showDetails() {
         p1.style.display = "none";
         p2.style.display = "block";
         setTimeout(() => p2.classList.add("active"), 50);
-    }, 300);
+    }, 200);
 }
 
 function goBack() {
@@ -218,9 +213,9 @@ function goBack() {
         p2.style.display = "none";
         p1.style.display = "block";
         setTimeout(() => p1.classList.add("active"), 50);
-    }, 300);
+    }, 200);
 }
 </script>
 
 </body>
-</html>
+</html>    
