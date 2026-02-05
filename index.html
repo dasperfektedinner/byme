@@ -21,7 +21,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* verhindert Scrollen */
+    overflow: hidden;
 }
 
 /* CONTAINER MIT SPOTLIGHT EFFEKT */
@@ -34,6 +34,7 @@ html, body {
     max-width: 520px;
     width: 90%;
     position: relative;
+    overflow: hidden;
 }
 
 /* LOGO MIT PULS EFFEKT */
@@ -132,18 +133,20 @@ h1 {
     color: #ddd;
 }
 
-/* SEITEN + ANIMATION */
+/* SEITEN + MORPH-ÜBERGANG */
 .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     opacity: 0;
-    transform: scale(0.95) rotate(-1deg) translateY(20px);
-    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    display: none;
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.8s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .page.active {
-    display: block;
     opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0);
+    clip-path: circle(150% at 50% 50%);
 }
 </style>
 </head>
@@ -167,7 +170,7 @@ h1 {
 
         <div class="divider"></div>
 
-        <p class="termin-daten">Am: 21.02.2025</p>
+        <p class="termin-daten">Am: 21.02.2026</p>
         <p class="termin-daten">Wo: Thiedeweg 23b</p>
         <p class="termin-daten">Wann: 18 Uhr</p>
         <p class="termin-daten">Dresscode: Locker und gemütlich</p>
@@ -179,7 +182,7 @@ h1 {
             Termin bestätigen
         </a>
 
-        <a class="btn" href="speisekarte.pdf" download>
+        <a class="btn" href="Speisekarte.pdf" download>
             Speisekarte herunterladen
         </a>
 
@@ -194,28 +197,28 @@ function showDetails() {
     const p1 = document.getElementById("page1");
     const p2 = document.getElementById("page2");
 
-    p1.classList.remove("active");
-
+    p2.style.display = "block";
     setTimeout(() => {
-        p1.style.display = "none";
-        p2.style.display = "block";
-        setTimeout(() => p2.classList.add("active"), 50);
-    }, 200);
+        p1.classList.remove("active");
+        p2.classList.add("active");
+    }, 50);
+
+    setTimeout(() => p1.style.display = "none", 800);
 }
 
 function goBack() {
     const p1 = document.getElementById("page1");
     const p2 = document.getElementById("page2");
 
-    p2.classList.remove("active");
-
+    p1.style.display = "block";
     setTimeout(() => {
-        p2.style.display = "none";
-        p1.style.display = "block";
-        setTimeout(() => p1.classList.add("active"), 50);
-    }, 200);
+        p2.classList.remove("active");
+        p1.classList.add("active");
+    }, 50);
+
+    setTimeout(() => p2.style.display = "none", 800);
 }
 </script>
 
 </body>
-</html>    
+</html>
