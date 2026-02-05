@@ -21,7 +21,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; /* verhindert Scrollen */
 }
 
 /* CONTAINER MIT SPOTLIGHT EFFEKT */
@@ -34,7 +34,6 @@ html, body {
     max-width: 520px;
     width: 90%;
     position: relative;
-    overflow: hidden;
 }
 
 /* LOGO MIT PULS EFFEKT */
@@ -133,20 +132,18 @@ h1 {
     color: #ddd;
 }
 
-/* SEITEN + MORPH-ÜBERGANG */
+/* SEITEN + ANIMATION */
 .page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     opacity: 0;
-    clip-path: circle(0% at 50% 50%);
-    transition: clip-path 0.8s ease-in-out, opacity 0.5s ease-in-out;
+    transform: scale(0.95) rotate(-1deg) translateY(20px);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    display: none;
 }
 
 .page.active {
+    display: block;
     opacity: 1;
-    clip-path: circle(150% at 50% 50%);
+    transform: scale(1) rotate(0deg) translateY(0);
 }
 </style>
 </head>
@@ -197,26 +194,26 @@ function showDetails() {
     const p1 = document.getElementById("page1");
     const p2 = document.getElementById("page2");
 
-    p2.style.display = "block";
-    setTimeout(() => {
-        p1.classList.remove("active");
-        p2.classList.add("active");
-    }, 50);
+    p1.classList.remove("active");
 
-    setTimeout(() => p1.style.display = "none", 800);
+    setTimeout(() => {
+        p1.style.display = "none";
+        p2.style.display = "block";
+        setTimeout(() => p2.classList.add("active"), 50);
+    }, 200);
 }
 
 function goBack() {
     const p1 = document.getElementById("page1");
     const p2 = document.getElementById("page2");
 
-    p1.style.display = "block";
-    setTimeout(() => {
-        p2.classList.remove("active");
-        p1.classList.add("active");
-    }, 50);
+    p2.classList.remove("active");
 
-    setTimeout(() => p2.style.display = "none", 800);
+    setTimeout(() => {
+        p2.style.display = "none";
+        p1.style.display = "block";
+        setTimeout(() => p1.classList.add("active"), 50);
+    }, 200);
 }
 </script>
 
