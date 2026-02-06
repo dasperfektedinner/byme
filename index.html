@@ -10,12 +10,13 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Kein Scrollen */
+    overflow: hidden; /* kein Scrollen */
     font-family: Arial, sans-serif;
     background: url("background.jpg") no-repeat center center/cover;
     color: white;
 }
 
+/* Overlay für halbtransparenten Effekt */
 .overlay {
     background: rgba(0,0,0,0.45);
     width: 100%;
@@ -25,22 +26,25 @@ html, body {
     align-items: center;
 }
 
+/* Seiten */
 .page {
-    display: none;
+    display: none; /* Standard: unsichtbar */
     width: 90%;
     max-width: 420px;
     height: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; /* Alles mittig verteilt */
+    justify-content: space-evenly;
     align-items: center;
 }
 
+/* Seite sichtbar */
 .page.active {
     display: flex;
 }
 
+/* Logo */
 .logo {
     width: 180px;
     animation: pulse 3s infinite;
@@ -52,26 +56,31 @@ html, body {
     100% { transform: scale(1); }
 }
 
+/* Überschrift */
 h1 {
     font-size: 32px;
 }
 
+/* Schnörkelschrift */
 .fancy {
     font-family: "Segoe Script","Comic Sans MS",cursive;
     font-size: 22px;
 }
 
+/* Text */
 p {
     font-size: 18px;
     line-height: 1.5;
 }
 
+/* Trennlinien */
 .divider {
     width: 80%;
     height: 1px;
     background: white;
 }
 
+/* Buttons */
 button {
     width: 85%;
     max-width: 300px;
@@ -93,6 +102,7 @@ button {
     color: white;
 }
 
+/* Zurück-Button */
 .back {
     position: absolute;
     top: 15px;
@@ -143,16 +153,26 @@ button {
 </div>
 
 <script>
+// Funktion zum Wechseln zwischen den Seiten
 function showPage(n){
-    document.getElementById("page1").classList.remove("active");
-    document.getElementById("page2").classList.remove("active");
-    document.getElementById("page"+n).classList.add("active");
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+
+    if(n === 1){
+        page1.classList.add("active");
+        page2.classList.remove("active");
+    } else {
+        page1.classList.remove("active");
+        page2.classList.add("active");
+    }
 }
 
+// SMS versenden
 function sendSMS(){
     window.location.href = "sms:+4915209767662?body=Ich%20best%C3%A4tige%20meinen%20Termin%20f%C3%BCr%20das%20Perfekte%20Dinner!";
 }
 
+// PDF herunterladen
 function downloadMenu(){
     window.location.href="Speisekarte.pdf";
 }
