@@ -10,16 +10,12 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* nirgendwo Scrollen */
+    overflow: hidden; /* Kein Scrollen */
     font-family: Arial, sans-serif;
-}
-
-body {
     background: url("background.jpg") no-repeat center center/cover;
     color: white;
 }
 
-/* Overlay */
 .overlay {
     background: rgba(0,0,0,0.45);
     width: 100%;
@@ -29,16 +25,15 @@ body {
     align-items: center;
 }
 
-/* Seiten */
 .page {
     display: none;
-    text-align: center;
     width: 90%;
     max-width: 420px;
     height: 100%;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; /* passt alles in den Screen */
+    justify-content: space-evenly; /* Alles mittig verteilt */
     align-items: center;
 }
 
@@ -53,12 +48,12 @@ body {
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.06); }
     100% { transform: scale(1); }
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 32px;
 }
 
 .fancy {
@@ -80,11 +75,12 @@ p {
 button {
     width: 85%;
     max-width: 300px;
-    padding: 14px;
+    padding: 16px;
     border-radius: 25px;
     border: none;
     font-size: 18px;
     cursor: pointer;
+    margin: 8px 0;
 }
 
 .btn-grey {
@@ -154,8 +150,7 @@ function showPage(n){
 }
 
 function sendSMS(){
-    window.location.href =
-    "sms:+4915209767662?body=Ich%20best%C3%A4tige%20meinen%20Termin%20f%C3%BCr%20das%20Perfekte%20Dinner!";
+    window.location.href = "sms:+4915209767662?body=Ich%20best%C3%A4tige%20meinen%20Termin%20f%C3%BCr%20das%20Perfekte%20Dinner!";
 }
 
 function downloadMenu(){
