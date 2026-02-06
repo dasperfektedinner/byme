@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* BODY + HINTERGRUND */
+/* BODY + GANZER HINTERGRUND */
 html, body {
     margin: 0;
     padding: 0;
@@ -17,18 +17,18 @@ html, body {
     height: 100%;
     font-family: 'Lato', Arial, sans-serif;
 
-    /* Dunklerer Verlauf Richtung Schwarz */
-    background: linear-gradient(135deg, #000000, #0b1a2a, #1f2f4a);
+    /* Dunkler Verlauf oben nach unten */
+    background: linear-gradient(180deg, #000000, #0b1a2a, #1f2f4a);
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* verhindert Scrollen */
+    overflow: hidden;
 }
 
 /* CONTAINER MIT SPOTLIGHT EFFEKT */
 .container {
-    background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
+    background: radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,30,0.9));
     padding: 50px 55px;
     border-radius: 25px;
     text-align: center; 
@@ -44,6 +44,7 @@ html, body {
     display: block;
     margin: 0 auto 25px auto;
     animation: pulse 2.5s infinite alternate;
+    background: transparent; /* Logo transparent */
 }
 
 @keyframes pulse {
