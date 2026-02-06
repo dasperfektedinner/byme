@@ -5,39 +5,40 @@
 <title>Terminvorschlag</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
-/* BODY + HINTERGRUND */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     font-family: 'Lato', Arial, sans-serif;
-    background: url("background.jpg") no-repeat center center fixed;
+    background: url("background.jpg") no-repeat center center;
     background-size: cover;
-    color: #ffffff;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
     overflow: hidden;
 }
 
-/* CONTAINER MIT SPOTLIGHT EFFEKT */
+/* GLAS-CONTAINER */
 .container {
-    background: radial-gradient(circle at center, rgba(255,255,255,0.12), rgba(0,0,50,0.85));
+    background: rgba(10, 20, 40, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     padding: 50px 55px;
     border-radius: 25px;
-    text-align: center; 
-    box-shadow: 0 30px 70px rgba(0,0,0,0.7);
+    text-align: center;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.6);
     max-width: 520px;
     width: 90%;
     position: relative;
 }
 
-/* LOGO MIT PULS EFFEKT */
+/* LOGO */
 .logo {
     width: 120px;
     display: block;
@@ -47,41 +48,32 @@ html, body {
 
 @keyframes pulse {
     0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
-    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.6)); }
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
-/* ÜBERSCHRIFT */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2em; 
+    font-size: 2.2em;
     margin-bottom: 25px;
-    letter-spacing: 1px;
-    font-weight: 700;
 }
 
-/* EINLADUNGSTEXT */
 .invite-text {
     font-family: 'Dancing Script', cursive;
     font-size: 1.4em;
     margin: 12px 0;
-    line-height: 1.5;
 }
 
-/* TERMIN DATEN */
 .termin-daten {
     font-family: 'Playfair Display', serif;
     font-size: 1.15em;
     margin: 8px 0;
-    line-height: 1.5;
 }
 
-/* ABGRENZUNGSLINIEN */
 .divider {
     height: 1px;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.3);
     margin: 20px 0;
-    border-radius: 1px;
 }
 
 /* BUTTONS */
@@ -94,56 +86,42 @@ h1 {
     border-radius: 30px;
     cursor: pointer;
     background: linear-gradient(180deg, #ffffff, #dddddd);
-    color: #000000;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
+    color: #000;
+    transition: 0.3s ease;
     min-width: 230px;
+    display: inline-block;
+    text-decoration: none;
 }
 
-.btn:hover {
-    background: #ffffff;
-    transform: scale(1.05);
-}
+.btn:hover { transform: scale(1.05); }
 
 .green {
     background: linear-gradient(180deg, #4caf50, #2e7d32);
     color: white;
 }
 
-.green:hover {
-    background: #43a047;
-}
+.green:hover { background: #43a047; }
 
-/* ZURÜCK BUTTON */
 .back-btn {
     position: absolute;
     top: 10px;
     left: 10px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1em;
-    color: #ffffff;
     text-decoration: underline;
     cursor: pointer;
-    transition: color 0.3s ease;
 }
 
-.back-btn:hover {
-    color: #ddd;
-}
-
-/* SEITEN + ANIMATION */
+/* SEITEN */
 .page {
     opacity: 0;
-    transform: scale(0.95) rotate(-1deg) translateY(20px);
-    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transform: scale(0.95) translateY(20px);
+    transition: 0.6s ease;
     display: none;
 }
 
 .page.active {
     display: block;
     opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0);
+    transform: scale(1) translateY(0);
 }
 </style>
 </head>
@@ -152,16 +130,14 @@ h1 {
 
 <div class="container">
 
-    <!-- SEITE 1 -->
     <div class="page active" id="page1">
-        <img src="logo.png" alt="Koch Logo" class="logo">
+        <img src="logo.png" class="logo">
         <h1>Terminvorschlag</h1>
         <button class="btn" onclick="showDetails()">Anzeigen</button>
     </div>
 
-    <!-- SEITE 2 -->
     <div class="page" id="page2">
-        <img src="logo.png" alt="Koch Logo" class="logo">
+        <img src="logo.png" class="logo">
 
         <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
@@ -174,8 +150,7 @@ h1 {
 
         <div class="divider"></div>
 
-        <a class="btn green"
-           href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
+        <a class="btn green" href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
             Termin bestätigen
         </a>
 
@@ -190,28 +165,20 @@ h1 {
 
 <script>
 function showDetails() {
-    const p1 = document.getElementById("page1");
-    const p2 = document.getElementById("page2");
-
-    p1.classList.remove("active");
-
+    page1.classList.remove("active");
     setTimeout(() => {
-        p1.style.display = "none";
-        p2.style.display = "block";
-        setTimeout(() => p2.classList.add("active"), 50);
+        page1.style.display = "none";
+        page2.style.display = "block";
+        setTimeout(() => page2.classList.add("active"), 50);
     }, 200);
 }
 
 function goBack() {
-    const p1 = document.getElementById("page1");
-    const p2 = document.getElementById("page2");
-
-    p2.classList.remove("active");
-
+    page2.classList.remove("active");
     setTimeout(() => {
-        p2.style.display = "none";
-        p1.style.display = "block";
-        setTimeout(() => p1.classList.add("active"), 50);
+        page2.style.display = "none";
+        page1.style.display = "block";
+        setTimeout(() => page1.classList.add("active"), 50);
     }, 200);
 }
 </script>
