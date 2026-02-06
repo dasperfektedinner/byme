@@ -2,90 +2,109 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Perfektes Dinner</title>
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        height: 100vh;
-        background: url("background.jpg") no-repeat center center/cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-    }
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    height:100vh;
+    background:url("background.jpg") no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
 
-    .page {
-        display: none;
-        text-align: center;
-        width: 100%;
-        max-width: 400px;
-    }
+.overlay{
+    background:rgba(0,0,0,0.45);
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-    .active {
-        display: block;
-    }
+.page{
+    display:none;
+    text-align:center;
+    width:90%;
+    max-width:420px;
+}
 
-    img.logo {
-        width: 150px;
-        margin-bottom: 30px;
-        animation: pulse 3s infinite;
-    }
+.active{ display:block; }
 
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
+.logo{
+    width:200px;
+    margin-bottom:30px;
+    animation:pulse 3s infinite;
+}
 
-    h1 {
-        margin-bottom: 20px;
-    }
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.06);}
+    100%{transform:scale(1);}
+}
 
-    button {
-        padding: 12px 25px;
-        border-radius: 25px;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 10px;
-    }
+h1{
+    font-size:36px;
+    margin-bottom:25px;
+}
 
-    .btn-grey {
-        background: #bcbcbc;
-        color: black;
-    }
+.fancy{
+    font-family:"Segoe Script","Comic Sans MS",cursive;
+    font-size:26px;
+    line-height:1.4;
+}
 
-    .btn-green {
-        background: #1f6b3a;
-        color: white;
-    }
+p{
+    font-size:22px;
+    line-height:1.6;
+}
 
-    .divider {
-        width: 80%;
-        height: 1px;
-        background: white;
-        margin: 20px auto;
-    }
+.divider{
+    width:85%;
+    height:1px;
+    background:white;
+    margin:25px auto;
+}
 
-    .fancy {
-        font-family: "Comic Sans MS", "Segoe Script", cursive;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
+button{
+    width:85%;
+    max-width:320px;
+    padding:18px;
+    border-radius:30px;
+    border:none;
+    font-size:20px;
+    margin:12px 0;
+    cursor:pointer;
+}
 
-    .back {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        cursor: pointer;
-        text-decoration: underline;
-        color: white;
-    }
+.btn-grey{
+    background:#bcbcbc;
+    color:black;
+}
+
+.btn-green{
+    background:#1f6b3a;
+    color:white;
+}
+
+.back{
+    position:absolute;
+    top:20px;
+    left:20px;
+    color:white;
+    font-size:18px;
+    text-decoration:underline;
+    cursor:pointer;
+}
 </style>
 </head>
 
 <body>
+<div class="overlay">
 
 <!-- SEITE 1 -->
 <div class="page active" id="page1">
@@ -102,7 +121,7 @@
 
     <div class="fancy">
         Hiermit lade ich dich herzlich zu meinem<br>
-        "Perfekten Dinner" ein.
+        „Perfekten Dinner“ ein.
     </div>
 
     <div class="divider"></div>
@@ -116,24 +135,26 @@
 
     <div class="divider"></div>
 
-    <button class="btn-green" onclick="sendSMS()">Termin bestätigen</button><br>
-
+    <button class="btn-green" onclick="sendSMS()">Termin bestätigen</button>
     <button class="btn-grey" onclick="downloadMenu()">Speisekarte herunterladen</button>
 </div>
 
+</div>
+
 <script>
-function showPage(num) {
+function showPage(n){
     document.getElementById("page1").classList.remove("active");
     document.getElementById("page2").classList.remove("active");
-    document.getElementById("page" + num).classList.add("active");
+    document.getElementById("page"+n).classList.add("active");
 }
 
-function sendSMS() {
-    window.location.href = "sms:+4915209767662?body=Ich%20best%C3%A4tige%20meinen%20Termin%20f%C3%BCr%20das%20Perfekte%20Dinner!";
+function sendSMS(){
+    window.location.href =
+    "sms:+4915209767662?body=Ich%20best%C3%A4tige%20meinen%20Termin%20f%C3%BCr%20das%20Perfekte%20Dinner!";
 }
 
-function downloadMenu() {
-    window.location.href = "Speisekarte.pdf";
+function downloadMenu(){
+    window.location.href="Speisekarte.pdf";
 }
 </script>
 
