@@ -8,15 +8,16 @@
 <style>
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* kein Scrollen */
+    overflow: hidden; /* Scrollen deaktiviert */
     font-family: Arial, sans-serif;
     background: url("background.jpg") no-repeat center center/cover;
     color: white;
 }
 
-/* Overlay für halbtransparenten Effekt */
+/* Halbtransparentes Overlay */
 .overlay {
     background: rgba(0,0,0,0.45);
     width: 100%;
@@ -28,18 +29,17 @@ html, body {
 
 /* Seiten */
 .page {
-    display: none; /* Standard: unsichtbar */
+    display: none;
     width: 90%;
     max-width: 420px;
     height: 100%;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-evenly; /* Inhalte gleichmäßig verteilen */
     align-items: center;
+    text-align: center;
 }
 
-/* Seite sichtbar */
 .page.active {
     display: flex;
 }
@@ -153,7 +153,6 @@ button {
 </div>
 
 <script>
-// Funktion zum Wechseln zwischen den Seiten
 function showPage(n){
     const page1 = document.getElementById("page1");
     const page2 = document.getElementById("page2");
@@ -167,12 +166,10 @@ function showPage(n){
     }
 }
 
-// SMS versenden
 function sendSMS(){
     window.location.href = "sms:+4915209767662?body=Ich%20best%C3%A4tige%20meinen%20Termin%20f%C3%BCr%20das%20Perfekte%20Dinner!";
 }
 
-// PDF herunterladen
 function downloadMenu(){
     window.location.href="Speisekarte.pdf";
 }
