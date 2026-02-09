@@ -33,26 +33,7 @@ html, body {
     position: relative;
 }
 
-/* Buttons in die Ecken */
-.maps-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 4px 8px;
-    font-size: 0.65em;
-    border-radius: 10px;
-    font-weight: bold;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    text-decoration: none;
-    z-index: 20; /* über Logo */
-    transition: 0.3s;
-}
-.maps-btn:hover { 
-    background: rgba(255,255,255,0.3);
-    transform: scale(1.05); 
-}
-
+/* Buttons */
 .back-btn {
     position: absolute;
     top: 12px;
@@ -63,10 +44,29 @@ html, body {
     z-index: 20;
 }
 
+.maps-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 10px;
+    font-size: 0.7em;
+    border-radius: 10px;
+    font-weight: bold;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    text-decoration: none;
+    z-index: 20;
+    transition: 0.3s;
+}
+.maps-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
 /* Logo */
 .logo {
     width: 115px;
-    margin: 30px auto 10px; /* etwas weiter oben */
+    margin: 30px auto 10px;
     animation: pulse 2.5s infinite alternate;
 }
 
@@ -86,26 +86,12 @@ html, body {
 }
 
 /* Text */
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    margin-bottom: 15px;
-}
-.invite-text {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.3em;
-}
-.termin-daten {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1em;
-}
+h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px; }
+.invite-text { font-family: 'Dancing Script', cursive; font-size: 1.3em; }
+.termin-daten { font-family: 'Playfair Display', serif; font-size: 1.1em; }
 
 /* Divider */
-.divider {
-    height: 1px;
-    background: rgba(255,255,255,0.25);
-    margin: 15px 0;
-}
+.divider { height: 1px; background: rgba(255,255,255,0.25); margin: 15px 0; }
 
 /* Buttons */
 .btn {
@@ -124,23 +110,11 @@ h1 {
 }
 .btn:hover { transform: scale(1.05); }
 
-.green {
-    background: linear-gradient(180deg, #4caf50, #2e7d32);
-    color: white;
-}
+.green { background: linear-gradient(180deg, #4caf50, #2e7d32); color: white; }
 
 /* Seiten */
-.page {
-    opacity: 0;
-    transform: scale(0.95);
-    transition: 0.5s;
-    display: none;
-}
-.page.active {
-    display: block;
-    opacity: 1;
-    transform: scale(1);
-}
+.page { opacity: 0; transform: scale(0.95); transition: 0.5s; display: none; }
+.page.active { display: block; opacity: 1; transform: scale(1); }
 
 /* Konfetti & Funken */
 .confetti, .spark {
@@ -151,17 +125,15 @@ h1 {
     border-radius: 50%;
     animation: fall 2s linear forwards;
 }
-
 .spark {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    box-shadow: 0 0 6px 2px yellow;
+    box-shadow: 0 0 8px 3px yellow;
 }
 
-@keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
 </style>
 </head>
 
@@ -179,11 +151,8 @@ h1 {
 <!-- SEITE 2 -->
 <div class="page" id="page2">
 
-    <!-- Maps Button: sichtbar oben rechts -->
-    <a class="btn maps-btn" target="_blank"
-       href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">
-       📍 Maps
-    </a>
+    <!-- Maps Button oben rechts -->
+    <a class="btn maps-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">📍 Maps</a>
 
     <!-- Zurück Button oben links -->
     <div class="back-btn" onclick="goBack()">Zurück</div>
@@ -203,7 +172,6 @@ h1 {
     <div class="divider"></div>
 
     <a class="btn green" onclick="confirmDinner()">Termin bestätigen</a>
-
     <a class="btn" href="Speisekarte.pdf">🍝 Speise und Getränkekarte</a>
 
 </div>
@@ -222,7 +190,6 @@ function showDetails() {
         page2.classList.add("active");
     }, 200);
 }
-
 function goBack() {
     page2.classList.remove("active");
     setTimeout(() => {
@@ -234,8 +201,8 @@ function goBack() {
 
 /* Konfetti + Funken + SMS */
 function confirmDinner() {
-    let bursts = 5;     
-    let pieces = 120;   
+    let bursts = 7;       // mehr Bursts
+    let pieces = 150;     // mehr Konfetti pro Burst
     for (let b = 0; b < bursts; b++) {
         setTimeout(() => {
             for (let i = 0; i < pieces; i++) {
@@ -247,7 +214,8 @@ function confirmDinner() {
                 document.body.appendChild(c);
                 setTimeout(()=>c.remove(),2500);
 
-                if (Math.random() < 0.3) {
+                // Funken
+                if (Math.random() < 0.4) {
                     let f = document.createElement("div");
                     f.className = "spark";
                     f.style.left = Math.random()*100+"vw";
@@ -257,12 +225,12 @@ function confirmDinner() {
                     setTimeout(()=>f.remove(),2000);
                 }
             }
-        }, b*200);
+        }, b*150);
     }
 
     setTimeout(()=>{
         window.location.href = "sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!";
-    }, 2300); // Verzögerung 2,3 Sekunden
+    }, 2300); // 2,3 Sekunden Verzögerung
 }
 
 /* Countdown */
