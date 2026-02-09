@@ -72,7 +72,15 @@ h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px
     font-family: 'Dancing Script', cursive; 
     font-size: 1.6em;
 }
-.termin-daten { font-family: 'Playfair Display', serif; font-size: 1.1em; }
+.termin-daten { font-family: 'Playfair Display', serif; font-size: 1.1em; margin: 5px 0; }
+
+/* Maps Link */
+.maps-link {
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px;
+}
 
 /* Divider */
 .divider { height: 1px; background: rgba(255,255,255,0.25); margin: 15px 0; }
@@ -150,7 +158,10 @@ h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px
     <div class="divider"></div>
 
     <p class="termin-daten">Am: 21.02.2026</p>
-    <p class="termin-daten">Wo: Thiedeweg 23b</p>
+    <p class="termin-daten">
+        Wo: 
+        <a class="maps-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">📍Maps</a>
+    </p>
     <p class="termin-daten">Wann: 18 Uhr</p>
     <p class="termin-daten">Dresscode: Locker & gemütlich</p>
 
