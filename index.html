@@ -38,14 +38,14 @@ html, body {
     position: absolute;
     top: 12px;
     right: 12px;
-    padding: 5px 10px;
-    font-size: 0.75em;
-    border-radius: 12px;
+    padding: 4px 8px;
+    font-size: 0.65em;
+    border-radius: 10px;
     font-weight: bold;
     background: rgba(255,255,255,0.15);
     color: #fff;
     text-decoration: none;
-    z-index: 10; /* sicher vor Logo */
+    z-index: 20; /* über Logo */
     transition: 0.3s;
 }
 .maps-btn:hover { 
@@ -60,13 +60,13 @@ html, body {
     font-size: 0.75em;
     cursor: pointer;
     text-decoration: underline;
-    z-index: 10;
+    z-index: 20;
 }
 
 /* Logo */
 .logo {
     width: 115px;
-    margin: 20px auto 10px; /* weiter oben gesetzt */
+    margin: 30px auto 10px; /* etwas weiter oben */
     animation: pulse 2.5s infinite alternate;
 }
 
@@ -179,11 +179,13 @@ h1 {
 <!-- SEITE 2 -->
 <div class="page" id="page2">
 
+    <!-- Maps Button: sichtbar oben rechts -->
     <a class="btn maps-btn" target="_blank"
        href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">
        📍 Maps
     </a>
 
+    <!-- Zurück Button oben links -->
     <div class="back-btn" onclick="goBack()">Zurück</div>
 
     <img src="logo.png" class="logo">
@@ -232,12 +234,11 @@ function goBack() {
 
 /* Konfetti + Funken + SMS */
 function confirmDinner() {
-    let bursts = 5;     // Wellen
-    let pieces = 120;   // Konfetti pro Welle
+    let bursts = 5;     
+    let pieces = 120;   
     for (let b = 0; b < bursts; b++) {
         setTimeout(() => {
             for (let i = 0; i < pieces; i++) {
-                // Konfetti
                 let c = document.createElement("div");
                 c.className = "confetti";
                 c.style.left = Math.random()*100+"vw";
@@ -246,7 +247,6 @@ function confirmDinner() {
                 document.body.appendChild(c);
                 setTimeout(()=>c.remove(),2500);
 
-                // Funken
                 if (Math.random() < 0.3) {
                     let f = document.createElement("div");
                     f.className = "spark";
