@@ -33,7 +33,7 @@ html, body {
     position: relative;
 }
 
-/* Google Maps Button */
+/* Maps Button (nur Seite 2) */
 .maps-btn {
     position: absolute;
     top: 12px;
@@ -47,12 +47,13 @@ html, body {
     font-weight: 700;
     box-shadow: 0 0 10px rgba(255,200,0,0.6);
     transition: 0.3s;
+    z-index: 10;
 }
 .maps-btn:hover { transform: scale(1.1); }
 
 .logo {
     width: 120px;
-    margin: 0 auto 25px;
+    margin: 0 auto 10px;
     display: block;
     animation: pulse 2.5s infinite alternate;
 }
@@ -61,6 +62,15 @@ html, body {
     0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
     50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
+}
+
+/* Countdown */
+#countdown {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95em;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    opacity: 0.85;
 }
 
 h1 {
@@ -137,8 +147,7 @@ h1 {
     top: -10px;
     width: 10px;
     height: 10px;
-    background: red;
-    animation: fall 1.5s linear forwards;
+    animation: fall 2s linear forwards;
     opacity: 0.9;
 }
 
@@ -155,12 +164,6 @@ h1 {
 
 <div class="container">
 
-    <!-- Google Maps -->
-    <a class="maps-btn" target="_blank"
-       href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b+22047+Hamburg">
-        📍 Maps
-    </a>
-
     <div class="page active" id="page1">
         <img src="logo.png" class="logo">
         <h1>Terminvorschlag</h1>
@@ -168,7 +171,17 @@ h1 {
     </div>
 
     <div class="page" id="page2">
+
+        <!-- Maps Button nur hier -->
+        <a class="maps-btn" target="_blank"
+           href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b+22047+Hamburg">
+            📍 Maps
+        </a>
+
         <img src="logo.png" class="logo">
+
+        <!-- COUNTDOWN -->
+        <div id="countdown">-- : -- : --</div>
 
         <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
@@ -177,7 +190,6 @@ h1 {
         <p class="termin-daten">Am: 21.02.2026</p>
         <p class="termin-daten">Wo: Thiedeweg 23b</p>
         <p class="termin-daten">Wann: 18 Uhr</p>
-        <p class="termin-daten">Dresscode: Locker und gemütlich</p>
 
         <div class="divider"></div>
 
@@ -194,6 +206,21 @@ h1 {
 </div>
 
 <script>
+const eventTime = new Date("2026-02-21T18:00:00").getTime();
+const cd = document.getElementById("countdown");
+
+setInterval(() => {
+    const now = new Date().getTime();
+    let diff = eventTime - now;
+    if (diff < 0) diff = 0;
+
+    const h = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
+    const m = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+    const s = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+
+    cd.textContent = `${h} : ${m} : ${s}`;
+}, 1000);
+
 function showDetails() {
     page1.classList.remove("active");
     setTimeout(() => {
@@ -214,20 +241,20 @@ function goBack() {
 
 /* Konfetti + SMS Verzögerung */
 function confirmTermin() {
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 180; i++) {  // MEHR KONFETTI
         const conf = document.createElement("div");
         conf.className = "confetti";
         conf.style.left = Math.random() * 100 + "vw";
         conf.style.background = `hsl(${Math.random()*360},100%,50%)`;
-        conf.style.animationDuration = (Math.random() + 1) + "s";
+        conf.style.animationDuration = (Math.random() + 1.2) + "s";
         document.body.appendChild(conf);
-        setTimeout(() => conf.remove(), 1500);
+        setTimeout(() => conf.remove(), 2000);
     }
 
     setTimeout(() => {
         window.location.href =
           "sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!";
-    }, 1500);
+    }, 1950);
 }
 </script>
 
