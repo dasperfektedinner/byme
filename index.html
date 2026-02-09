@@ -36,22 +36,26 @@ html, body {
 /* Buttons in die Ecken */
 .maps-btn {
     position: absolute;
-    top: 6px;
-    right: 6px;
-    padding: 6px 12px;
-    font-size: 0.75em;
-    border-radius: 20px;
+    top: 8px;
+    right: 8px;
+    padding: 5px 10px;
+    font-size: 0.7em;
+    border-radius: 15px;
     font-weight: bold;
-    background: linear-gradient(180deg,#ffcc00,#ff9900);
-    color: #000;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
     text-decoration: none;
+    transition: 0.3s;
 }
-.maps-btn:hover { transform: scale(1.1); }
+.maps-btn:hover { 
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05); 
+}
 
 .back-btn {
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 8px;
+    left: 8px;
     font-size: 0.75em;
     cursor: pointer;
     text-decoration: underline;
