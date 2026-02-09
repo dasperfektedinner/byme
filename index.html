@@ -112,7 +112,7 @@ h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px
     border-radius: 50%;
 }
 .confetti { width: 8px; height: 8px; animation: fall linear forwards; }
-.spark { width: 4px; height: 4px; box-shadow: 0 0 10px 3px yellow; animation: sparkFall linear forwards, sparkFlicker 0.2s infinite alternate; }
+.spark { width: 4px; height: 4px; box-shadow: 0 0 12px 4px yellow; animation: sparkFall linear forwards, sparkFlicker 0.2s infinite alternate; }
 
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
 @keyframes sparkFall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
@@ -143,7 +143,8 @@ h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px
     <div class="divider"></div>
 
     <p class="termin-daten">Am: 21.02.2026</p>
-    <p class="termin-daten">Wo: 
+    <p class="termin-daten">
+        Wo: 
         <a class="maps-link" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">📍Maps</a>
     </p>
     <p class="termin-daten">Wann: 18 Uhr</p>
@@ -196,34 +197,34 @@ setInterval(() => {
 let confettiInterval;
 function startConfetti() {
     confettiInterval = setInterval(() => {
-        for(let i=0;i<15;i++){
+        for(let i=0;i<25;i++){ // mehr Konfetti pro Intervall
             let c = document.createElement("div");
             c.className = "confetti";
             c.style.left = Math.random()*100 + "vw";
             c.style.background = `hsl(${Math.random()*360},100%,50%)`;
-            c.style.animationDuration = (1.5 + Math.random()) + "s";
+            c.style.animationDuration = (1.2 + Math.random()) + "s";
             document.body.appendChild(c);
             setTimeout(()=>c.remove(),3000);
 
-            if(Math.random()<0.5){
+            if(Math.random()<0.6){ // mehr Funken
                 let f = document.createElement("div");
                 f.className = "spark";
                 f.style.left = Math.random()*100 + "vw";
-                f.style.animationDuration = (1 + Math.random()*0.8) + "s";
+                f.style.animationDuration = (0.8 + Math.random()*0.6) + "s";
                 document.body.appendChild(f);
                 setTimeout(()=>f.remove(),2200);
             }
         }
-    }, 150);
+    }, 100);
 }
 
-/* Termin bestätigen mit Verzögerung 2,3s */
+/* Termin bestätigen mit Verzögerung 1,8s */
 function confirmDinner() {
     startConfetti();
     setTimeout(()=>{
-        clearInterval(confettiInterval); // Stoppt den Regen sobald SMS geöffnet wird
+        clearInterval(confettiInterval);
         window.location.href = "sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!";
-    }, 2300);
+    }, 1800);
 }
 </script>
 
