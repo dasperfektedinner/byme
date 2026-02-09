@@ -33,10 +33,27 @@ html, body {
     position: relative;
 }
 
+/* Google Maps Button */
+.maps-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(180deg, #ffcc00, #ff9900);
+    color: #000;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(255,200,0,0.6);
+    transition: 0.3s;
+}
+.maps-btn:hover { transform: scale(1.1); }
+
 .logo {
     width: 120px;
+    margin: 0 auto 25px;
     display: block;
-    margin: 0 auto 25px auto;
     animation: pulse 2.5s infinite alternate;
 }
 
@@ -82,11 +99,11 @@ h1 {
     display: inline-block;
     min-width: 230px;
     transition: 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
-.btn:hover {
-    transform: scale(1.05);
-}
+.btn:hover { transform: scale(1.05); }
 
 .green {
     background: linear-gradient(180deg, #4caf50, #2e7d32);
@@ -113,12 +130,36 @@ h1 {
     opacity: 1;
     transform: scale(1);
 }
+
+/* KONFETTI */
+.confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background: red;
+    animation: fall 1.5s linear forwards;
+    opacity: 0.9;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
+
+    <!-- Google Maps -->
+    <a class="maps-btn" target="_blank"
+       href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b+22047+Hamburg">
+        📍 Maps
+    </a>
 
     <div class="page active" id="page1">
         <img src="logo.png" class="logo">
@@ -140,17 +181,12 @@ h1 {
 
         <div class="divider"></div>
 
-        <a class="btn green"
-           href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
-           Termin bestätigen
-        </a>
+        <button class="btn green" onclick="confirmTermin()">
+            Termin bestätigen
+        </button>
 
         <a class="btn" href="Speisekarte.pdf" download>
-            Speisekarte herunterladen
-        </a>
-
-        <a class="btn" href="Getraenkekarte.pdf" download>
-            Getränkekarte herunterladen
+            🍝 Speise und Getränkekarte
         </a>
 
         <div class="back-btn" onclick="goBack()">Zurück</div>
@@ -174,6 +210,24 @@ function goBack() {
         page1.style.display = "block";
         page1.classList.add("active");
     }, 200);
+}
+
+/* Konfetti + SMS Verzögerung */
+function confirmTermin() {
+    for (let i = 0; i < 80; i++) {
+        const conf = document.createElement("div");
+        conf.className = "confetti";
+        conf.style.left = Math.random() * 100 + "vw";
+        conf.style.background = `hsl(${Math.random()*360},100%,50%)`;
+        conf.style.animationDuration = (Math.random() + 1) + "s";
+        document.body.appendChild(conf);
+        setTimeout(() => conf.remove(), 1500);
+    }
+
+    setTimeout(() => {
+        window.location.href =
+          "sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!";
+    }, 1500);
 }
 </script>
 
