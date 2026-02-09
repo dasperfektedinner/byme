@@ -36,15 +36,16 @@ html, body {
 /* Buttons in die Ecken */
 .maps-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 12px;
+    right: 12px;
     padding: 5px 10px;
-    font-size: 0.7em;
-    border-radius: 15px;
+    font-size: 0.75em;
+    border-radius: 12px;
     font-weight: bold;
     background: rgba(255,255,255,0.15);
     color: #fff;
     text-decoration: none;
+    z-index: 10; /* sicher vor Logo */
     transition: 0.3s;
 }
 .maps-btn:hover { 
@@ -54,17 +55,18 @@ html, body {
 
 .back-btn {
     position: absolute;
-    top: 8px;
-    left: 8px;
+    top: 12px;
+    left: 12px;
     font-size: 0.75em;
     cursor: pointer;
     text-decoration: underline;
+    z-index: 10;
 }
 
 /* Logo */
 .logo {
     width: 115px;
-    margin: 5px auto 5px;
+    margin: 20px auto 10px; /* weiter oben gesetzt */
     animation: pulse 2.5s infinite alternate;
 }
 
