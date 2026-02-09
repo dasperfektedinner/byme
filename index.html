@@ -44,26 +44,6 @@ html, body {
     z-index: 20;
 }
 
-.maps-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 4px 8px; /* minimaler Abstand */
-    font-size: 0.7em;
-    border-radius: 8px;
-    font-weight: bold;
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    text-decoration: none;
-    z-index: 20;
-    transition: 0.3s;
-    white-space: nowrap;
-}
-.maps-btn:hover {
-    background: rgba(255,255,255,0.3);
-    transform: scale(1.05);
-}
-
 /* Logo */
 .logo {
     width: 115px;
@@ -88,7 +68,10 @@ html, body {
 
 /* Text */
 h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px; }
-.invite-text { font-family: 'Dancing Script', cursive; font-size: 1.3em; }
+.invite-text { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.6em;
+}
 .termin-daten { font-family: 'Playfair Display', serif; font-size: 1.1em; }
 
 /* Divider */
@@ -120,20 +103,24 @@ h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px
 /* Konfetti & Funken */
 .confetti, .spark {
     position: fixed;
-    width: 8px;
-    height: 8px;
     top: -10px;
     border-radius: 50%;
-    animation: fall 2s linear forwards;
+    animation: fall linear forwards;
+}
+.confetti {
+    width: 8px;
+    height: 8px;
 }
 .spark {
     width: 4px;
     height: 4px;
-    border-radius: 50%;
-    box-shadow: 0 0 8px 3px yellow;
+    box-shadow: 0 0 10px 3px yellow;
+    animation: sparkFall linear forwards, sparkFlicker 0.2s infinite alternate;
 }
 
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+@keyframes sparkFall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+@keyframes sparkFlicker { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
 
 </style>
 </head>
@@ -151,9 +138,6 @@ h1 { font-family: 'Playfair Display', serif; font-size: 2em; margin-bottom: 15px
 
 <!-- SEITE 2 -->
 <div class="page" id="page2">
-
-    <!-- Maps Button oben rechts -->
-    <a class="btn maps-btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">📍 Maps</a>
 
     <!-- Zurück Button oben links -->
     <div class="back-btn" onclick="goBack()">Zurück</div>
@@ -202,27 +186,28 @@ function goBack() {
 
 /* Konfetti + Funken + SMS */
 function confirmDinner() {
-    let bursts = 7;       
-    let pieces = 150;     
+    const bursts = 8;
+    const pieces = 180;
+
     for (let b = 0; b < bursts; b++) {
         setTimeout(() => {
             for (let i = 0; i < pieces; i++) {
                 let c = document.createElement("div");
                 c.className = "confetti";
-                c.style.left = Math.random()*100+"vw";
+                c.style.left = Math.random() * 100 + "vw";
                 c.style.background = `hsl(${Math.random()*360},100%,50%)`;
-                c.style.animationDuration = (1.5+Math.random())+"s";
+                c.style.animationDuration = (1.5 + Math.random()) + "s";
                 document.body.appendChild(c);
-                setTimeout(()=>c.remove(),2500);
+                setTimeout(()=>c.remove(), 3000);
 
-                if (Math.random() < 0.4) {
+                if (Math.random() < 0.5) {
                     let f = document.createElement("div");
                     f.className = "spark";
-                    f.style.left = Math.random()*100+"vw";
+                    f.style.left = Math.random() * 100 + "vw";
                     f.style.background = "yellow";
-                    f.style.animationDuration = (1+Math.random())+"s";
+                    f.style.animationDuration = (1 + Math.random()*0.8) + "s";
                     document.body.appendChild(f);
-                    setTimeout(()=>f.remove(),2000);
+                    setTimeout(()=>f.remove(), 2200);
                 }
             }
         }, b*150);
