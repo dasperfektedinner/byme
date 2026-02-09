@@ -24,67 +24,69 @@ html, body {
 
 .container {
     background: radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,30,0.9));
-    padding: 40px 45px;
+    padding: 50px 55px;
     border-radius: 25px;
-    text-align: center;
+    text-align: center; 
     box-shadow: 0 30px 70px rgba(0,0,0,0.7);
     max-width: 520px;
     width: 90%;
     position: relative;
 }
 
-/* LOGO */
 .logo {
-    width: 100px;
-    margin: 0 auto 15px;
+    width: 120px;
     display: block;
+    margin: 0 auto 25px auto;
     animation: pulse 2.5s infinite alternate;
 }
 
 @keyframes pulse {
-    from { transform: scale(1); }
-    to   { transform: scale(1.05); }
+    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); }
+    100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    margin-bottom: 15px;
+    font-size: 2.2em; 
+    margin-bottom: 25px;
 }
 
 .invite-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.25em;
+    font-size: 1.4em;
+    margin: 12px 0;
 }
 
 .termin-daten {
     font-family: 'Playfair Display', serif;
-    font-size: 1.05em;
-    margin: 5px 0;
+    font-size: 1.15em;
+    margin: 8px 0;
 }
 
 .divider {
     height: 1px;
     background: rgba(255,255,255,0.25);
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
-/* BUTTONS KLEINER */
 .btn {
-    margin-top: 12px;
-    padding: 11px 24px;
-    font-size: 0.95em;
+    margin-top: 15px;
+    padding: 14px 30px;
+    font-size: 1em;
     font-weight: 600;
     border-radius: 30px;
     background: linear-gradient(180deg, #ffffff, #dddddd);
     color: #000;
     text-decoration: none;
     display: inline-block;
-    min-width: 210px;
+    min-width: 230px;
     transition: 0.3s;
 }
 
-.btn:hover { transform: scale(1.05); }
+.btn:hover {
+    transform: scale(1.05);
+}
 
 .green {
     background: linear-gradient(180deg, #4caf50, #2e7d32);
@@ -138,7 +140,6 @@ h1 {
 
         <div class="divider"></div>
 
-        <!-- ALLE 3 BUTTONS SICHTBAR -->
         <a class="btn green"
            href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
            Termin bestätigen
@@ -154,7 +155,6 @@ h1 {
 
         <div class="back-btn" onclick="goBack()">Zurück</div>
     </div>
-
 </div>
 
 <script>
