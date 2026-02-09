@@ -48,15 +48,16 @@ html, body {
     position: absolute;
     top: 12px;
     right: 12px;
-    padding: 5px 10px;
+    padding: 4px 8px; /* minimaler Abstand */
     font-size: 0.7em;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: bold;
     background: rgba(255,255,255,0.15);
     color: #fff;
     text-decoration: none;
     z-index: 20;
     transition: 0.3s;
+    white-space: nowrap;
 }
 .maps-btn:hover {
     background: rgba(255,255,255,0.3);
@@ -201,8 +202,8 @@ function goBack() {
 
 /* Konfetti + Funken + SMS */
 function confirmDinner() {
-    let bursts = 7;       // mehr Bursts
-    let pieces = 150;     // mehr Konfetti pro Burst
+    let bursts = 7;       
+    let pieces = 150;     
     for (let b = 0; b < bursts; b++) {
         setTimeout(() => {
             for (let i = 0; i < pieces; i++) {
@@ -214,7 +215,6 @@ function confirmDinner() {
                 document.body.appendChild(c);
                 setTimeout(()=>c.remove(),2500);
 
-                // Funken
                 if (Math.random() < 0.4) {
                     let f = document.createElement("div");
                     f.className = "spark";
