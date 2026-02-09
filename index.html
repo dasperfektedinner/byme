@@ -5,15 +5,19 @@
 <title>Terminvorschlag</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
 <style>
+/* BODY + GANZER HINTERGRUND */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     font-family: 'Lato', Arial, sans-serif;
+
+    /* Dunkler Verlauf oben nach unten */
     background: linear-gradient(180deg, #000000, #0b1a2a, #1f2f4a);
     color: #ffffff;
     display: flex;
@@ -22,6 +26,7 @@ html, body {
     overflow: hidden;
 }
 
+/* CONTAINER MIT SPOTLIGHT EFFEKT */
 .container {
     background: radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,30,0.9));
     padding: 50px 55px;
@@ -33,11 +38,13 @@ html, body {
     position: relative;
 }
 
+/* LOGO MIT PULS EFFEKT */
 .logo {
     width: 120px;
     display: block;
     margin: 0 auto 25px auto;
     animation: pulse 2.5s infinite alternate;
+    background: transparent; /* Logo transparent */
 }
 
 @keyframes pulse {
@@ -46,45 +53,59 @@ html, body {
     100% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
 }
 
+/* ÜBERSCHRIFT */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.2em; 
     margin-bottom: 25px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-align: center; 
 }
 
+/* EINLADUNGSTEXT */
 .invite-text {
     font-family: 'Dancing Script', cursive;
     font-size: 1.4em;
     margin: 12px 0;
+    line-height: 1.5;
 }
 
+/* TERMIN DATEN */
 .termin-daten {
     font-family: 'Playfair Display', serif;
     font-size: 1.15em;
     margin: 8px 0;
+    line-height: 1.5;
 }
 
+/* ABGRENZUNGSLINIEN */
 .divider {
     height: 1px;
     background: rgba(255,255,255,0.25);
     margin: 20px 0;
+    border-radius: 1px;
 }
 
+/* BUTTONS */
 .btn {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 14px 30px;
     font-size: 1em;
     font-weight: 600;
+    border: none;
     border-radius: 30px;
+    cursor: pointer;
     background: linear-gradient(180deg, #ffffff, #dddddd);
-    color: #000;
+    color: #000000;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
     min-width: 230px;
-    transition: 0.3s;
 }
 
 .btn:hover {
+    background: #ffffff;
     transform: scale(1.05);
 }
 
@@ -93,25 +114,39 @@ h1 {
     color: white;
 }
 
+.green:hover {
+    background: #43a047;
+}
+
+/* ZURÜCK BUTTON oben links */
 .back-btn {
     position: absolute;
     top: 10px;
     left: 10px;
-    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1em;
+    color: #ffffff;
     text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
+.back-btn:hover {
+    color: #ddd;
+}
+
+/* SEITEN + ANIMATION */
 .page {
     opacity: 0;
-    transform: scale(0.95);
-    transition: 0.5s;
+    transform: scale(0.95) rotate(-1deg) translateY(20px);
+    transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     display: none;
 }
 
 .page.active {
     display: block;
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg) translateY(0);
 }
 </style>
 </head>
@@ -120,14 +155,16 @@ h1 {
 
 <div class="container">
 
+    <!-- SEITE 1 -->
     <div class="page active" id="page1">
-        <img src="logo.png" class="logo">
+        <img src="logo.png" alt="Koch Logo" class="logo">
         <h1>Terminvorschlag</h1>
         <button class="btn" onclick="showDetails()">Anzeigen</button>
     </div>
 
+    <!-- SEITE 2 -->
     <div class="page" id="page2">
-        <img src="logo.png" class="logo">
+        <img src="logo.png" alt="Koch Logo" class="logo">
 
         <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
@@ -142,7 +179,7 @@ h1 {
 
         <a class="btn green"
            href="sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!">
-           Termin bestätigen
+            Termin bestätigen
         </a>
 
         <a class="btn" href="Speisekarte.pdf" download>
@@ -150,29 +187,39 @@ h1 {
         </a>
 
         <a class="btn" href="Getraenkekarte.pdf" download>
-            Getränkekarte herunterladen
+            Getraenkekarte herunterladen 
         </a>
 
         <div class="back-btn" onclick="goBack()">Zurück</div>
+
     </div>
+
 </div>
 
 <script>
 function showDetails() {
-    page1.classList.remove("active");
+    const p1 = document.getElementById("page1");
+    const p2 = document.getElementById("page2");
+
+    p1.classList.remove("active");
+
     setTimeout(() => {
-        page1.style.display = "none";
-        page2.style.display = "block";
-        page2.classList.add("active");
+        p1.style.display = "none";
+        p2.style.display = "block";
+        setTimeout(() => p2.classList.add("active"), 50);
     }, 200);
 }
 
 function goBack() {
-    page2.classList.remove("active");
+    const p1 = document.getElementById("page1");
+    const p2 = document.getElementById("page2");
+
+    p2.classList.remove("active");
+
     setTimeout(() => {
-        page2.style.display = "none";
-        page1.style.display = "block";
-        page1.classList.add("active");
+        p2.style.display = "none";
+        p1.style.display = "block";
+        setTimeout(() => p1.classList.add("active"), 50);
     }, 200);
 }
 </script>
