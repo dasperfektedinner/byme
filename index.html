@@ -22,7 +22,6 @@ html, body {
     overflow: hidden;
 }
 
-/* sanfter Glow-Hintergrund */
 body::before {
     content: "";
     position: fixed;
@@ -33,6 +32,7 @@ body::before {
     animation: floatBg 14s ease-in-out infinite alternate;
     pointer-events: none;
 }
+
 @keyframes floatBg {
     from { transform: translateY(0); }
     to { transform: translateY(-25px); }
@@ -88,7 +88,7 @@ body::before {
 }
 @keyframes glow {
     from { text-shadow: 0 0 6px gold; }
-    to { text-shadow: 0 0 14px #ffd27d; }
+    to { text-shadow: 0 0 18px #ffd27d; }
 }
 
 /* Text */
@@ -125,7 +125,7 @@ h1 {
 }
 
 /* Maps */
-.maps-link { color: gold; text-decoration: none; }
+.maps-link { color: red; text-decoration: none; }
 
 /* Buttons */
 .btn {
@@ -165,25 +165,26 @@ h1 {
 
 .green { background: linear-gradient(180deg, #4caf50, #2e7d32); color: white; }
 
-/* FUNKEN */
+/* SUPER HELLE FUNKEN */
 .spark {
     position: fixed;
     top: -10px;
-    width: 3px;
-    height: 3px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: radial-gradient(circle, #fff2b0 0%, #ffcc55 60%, #aa7a00 100%);
+    background: radial-gradient(circle, #ffffff 0%, #ffd966 40%, #ffae00 70%, #a56b00 100%);
     box-shadow:
-        0 0 6px rgba(255,200,80,0.8),
-        0 0 12px rgba(255,180,60,0.5);
-    animation: sparkFall linear forwards, sparkTwinkle 0.15s infinite alternate;
+        0 0 10px rgba(255,220,120,1),
+        0 0 25px rgba(255,200,80,0.9),
+        0 0 40px rgba(255,180,60,0.8);
+    animation: sparkFall linear forwards, sparkTwinkle 0.12s infinite alternate;
 }
 
 @keyframes sparkFall {
-    to { transform: translateY(110vh) translateX(30px); opacity: 0; }
+    to { transform: translateY(110vh) translateX(40px); opacity: 0; }
 }
 @keyframes sparkTwinkle {
-    from { opacity: 0.4; }
+    from { opacity: 0.5; }
     to { opacity: 1; }
 }
 </style>
@@ -193,14 +194,12 @@ h1 {
 
 <div class="container">
 
-<!-- SEITE 1 -->
 <div class="page active" id="page1">
     <img src="logo.png" class="logo">
     <h1>Terminvorschlag</h1>
     <button class="btn" onclick="showDetails()">Anzeigen</button>
 </div>
 
-<!-- SEITE 2 -->
 <div class="page" id="page2">
     <div class="back-btn" onclick="goBack()">Zurück</div>
 
@@ -246,7 +245,6 @@ function goBack() {
     }, 200);
 }
 
-/* Countdown */
 const eventDate = new Date("2026-02-21T18:00:00").getTime();
 const cd = document.getElementById("countdown");
 
@@ -260,11 +258,11 @@ setInterval(() => {
     cd.textContent = `[ ${h} : ${m} : ${s} ]`;
 },1000);
 
-/* FUNKEN-REGEN + SMS */
+/* FUNKEN + SMS */
 let sparkInterval;
 function startSparks() {
     sparkInterval = setInterval(() => {
-        for(let i=0;i<40;i++){
+        for(let i=0;i<45;i++){
             let s = document.createElement("div");
             s.className = "spark";
             s.style.left = Math.random()*100 + "vw";
@@ -272,7 +270,7 @@ function startSparks() {
             document.body.appendChild(s);
             setTimeout(()=>s.remove(),2500);
         }
-    },80);
+    },70);
 }
 
 function confirmDinner() {
