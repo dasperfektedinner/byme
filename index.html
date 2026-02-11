@@ -51,6 +51,17 @@ body::before {
     border: 1px solid rgba(255,255,255,0.15);
 }
 
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.75em;
+    cursor: pointer;
+    text-decoration: underline;
+    z-index: 20;
+}
+
 /* Logo */
 .logo {
     width: 115px;
@@ -113,6 +124,13 @@ h1 {
     box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
 }
 
+/* Maps Link */
+.maps-link {
+    color: #ff4d4d;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
 /* Buttons */
 .btn {
     margin-top: 12px;
@@ -152,16 +170,12 @@ h1 {
 .green { background: linear-gradient(180deg, #4caf50, #2e7d32); color: white; }
 
 /* Konfetti */
-.confetti, .spark {
+.confetti {
     position: fixed;
     top: -10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-}
-.confetti { width: 8px; height: 8px; }
-.spark {
-    width: 4px;
-    height: 4px;
-    box-shadow: 0 0 20px 5px yellow, 0 0 30px 8px orange, 0 0 40px 10px white;
 }
 
 @keyframes fall { to { transform: translateY(110vh); opacity: 0; } }
@@ -173,24 +187,33 @@ h1 {
 
 <div class="container">
 
+<!-- SEITE 1 -->
 <div class="page active" id="page1">
     <img src="logo.png" class="logo">
     <h1>Terminvorschlag</h1>
     <button class="btn" onclick="showDetails()">Anzeigen</button>
 </div>
 
+<!-- SEITE 2 -->
 <div class="page" id="page2">
+    <div class="back-btn" onclick="goBack()">Zurück</div>
+
     <img src="logo.png" class="logo">
     <div id="countdown">[ -- : -- : -- ]</div>
 
     <p class="invite-text">Hiermit lade ich dich herzlich zu meinem „Perfekten Dinner“ ein.</p>
 
     <p class="termin-daten">Am: 21.02.2026</p>
-    <p class="termin-daten">Wo: Thiedeweg 23b</p>
+    <p class="termin-daten">
+        Wo:
+        <a class="maps-link" target="_blank"
+           href="https://www.google.com/maps/search/?api=1&query=Thiedeweg+23b,+22047+Hamburg">📍Maps</a>
+    </p>
     <p class="termin-daten">Wann: 18 Uhr</p>
     <p class="termin-daten">Dresscode: Locker & gemütlich</p>
 
     <a class="btn green" onclick="confirmDinner()">Termin bestätigen</a>
+    <a class="btn" href="Speisekarte.pdf">🍝 Speise und Getränkekarte 🍷</a>
 </div>
 
 </div>
@@ -208,6 +231,16 @@ function showDetails() {
     }, 200);
 }
 
+function goBack() {
+    page2.classList.remove("active");
+    setTimeout(() => {
+        page2.style.display = "none";
+        page1.style.display = "block";
+        page1.classList.add("active");
+    }, 200);
+}
+
+/* Countdown */
 const eventDate = new Date("2026-02-21T18:00:00").getTime();
 const cd = document.getElementById("countdown");
 
@@ -221,6 +254,7 @@ setInterval(() => {
     cd.textContent = `[ ${h} : ${m} : ${s} ]`;
 },1000);
 
+/* Konfetti + SMS */
 let confettiInterval;
 function startConfetti() {
     confettiInterval = setInterval(() => {
@@ -238,17 +272,10 @@ function startConfetti() {
 
 function confirmDinner() {
     startConfetti();
-    const msg = document.createElement("div");
-    msg.textContent = "💖 Danke für deine Zusage!";
-    msg.style.position="fixed";
-    msg.style.top="50%";
-    msg.style.left="50%";
-    msg.style.transform="translate(-50%,-50%)";
-    msg.style.fontSize="2em";
-    msg.style.zIndex="999";
-    document.body.appendChild(msg);
-
-    setTimeout(()=>clearInterval(confettiInterval),1500);
+    setTimeout(()=>{
+        clearInterval(confettiInterval);
+        window.location.href = "sms:+4915209767662?body=Ich%20nehme%20am%20Perfekten%20Dinner%20teil!";
+    }, 1250);
 }
 </script>
 
